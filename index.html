@@ -4,46 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Cadastro Pet</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
-
 <body>
-    <div class="for-img">
-        <img src="assets/img/giphy.gif">
+    <div class="container">
+        <div class="form-image">
+            <img src="assets/img/giphy.gif" alt="Imagem animada de um pet">
+        </div>
+        <form class="form" id="formulario">
+            <h1>Formulário de Cadastro</h1>
+            <article id="info_pet">
+                <label for="nameDono">Nome do Dono</label>
+                <input id="nameDono" type="text" class="input-style" placeholder="Digite o nome do dono:" required>
+
+                <label for="namePet">Nome do Pet</label>
+                <input id="namePet" type="text" class="input-style" placeholder="Digite o nome do pet:" required>
+
+                <label for="especie">espécie do pet</label>
+                <input id="especie" type="text" class="input-style" placeholder="Digite a espécie do pet:" required>
+
+                <label for="raca">Raça do Pet</label>
+                <input id="raca" type="text" class="input-style" placeholder="Digite a raça do pet:" required>
+
+                <label for="idadepet">Idade do Pet</label>
+                <input id="idadepet" type="number" class="input-style" placeholder="Digite a idade do pet:" required>
+            </article>
+            <button type="submit" class="button submit-button">Cadastrar</button>
+
+        </form>
     </div>
 
-    <main>
-        <h1>Forumlário de Cadastro</h1>
-        <section id="formulario">
-            <article id="info_dono">
-                <h2>Info do Usuário:</h2>
-                <label>Nome</label>
-                <input id="nameUser" type="text" placeholder="Digite o seu nome:">
-            </article>
-
-            <article id="info_pet">
-                <h2>Info do Pet</h2>
-                <label>Nome do Pet</label>
-                <input id="namePet" type="text" placeholder="Digite o nome do pet:">
-                <label>Raça do Pet</label>
-                <input id="raca" type="text" placeholder="Digite a raça do pet:">
-                <label>Idade do Pet</label>
-                <input id="idadepet" type="number" placeholder="Digite a idade do pet:">
-            </article>
-            <button>Enviar</button>
-        </section>
-        <section id="saida">
-            <label>Nome do Dono <span class="span"></span></label>
-            <label>Nome do Pet <span class="span"></span></label>
-            <label>Raça do Pet <span class="span"></span></label>
-            <label>Idade do Pet <span class="span"></span></label>
-        </section>
-
-    </main>
-
+    <section id="saida" class="hidden">
+        <h2>Pets Cadastrados</h2>
+        <ul id="petList"></ul>
+    </section>
 
     <script src="script.js"></script>
 </body>
