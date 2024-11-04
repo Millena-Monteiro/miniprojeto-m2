@@ -6,7 +6,6 @@ const racaInput = document.getElementById("raca");
 const idadeInput = document.getElementById("idadepet");
 const formulario = document.getElementById("formulario");
 const petList = document.getElementById("petList");
-const saidaSection = document.getElementById("saida");
 
 let pets = [];
 let currentIndex = null; // Para rastrear o índice do pet sendo editado
@@ -25,43 +24,43 @@ function renderPetList() {
     petList.innerHTML = ""; // Limpa a lista
     pets.forEach((pet, index) => {
         const li = document.createElement("li");
-        li.innerText = `Dono: ${pet.nomeDono}, Pet: ${pet.nome}, Espécie: ${pet.especie}, Raça: ${pet.raca}, Idade: ${pet.idade} anos `;
+        li.innerText = `Dono: ${pet.nomeDono}, Pet: ${pet.nome}, Espécie: ${pet.especie}, Raça: ${pet.raca}, Idade: ${pet.idade} anos`;
+
+        const buttonContainer = document.createElement("div");
+        buttonContainer.style.marginTop = "10px"; // Espaçamento acima dos botões
 
         const editButton = document.createElement("button");
         editButton.innerText = "Editar";
-        editButton.className = "button edit-button";
+        editButton.className = "edit-button"; // Classe para estilização
         editButton.onclick = () => editPet(index);
 
         const deleteButton = document.createElement("button");
         deleteButton.innerText = "Deletar";
-        deleteButton.className = "button delete-button";
+        deleteButton.className = "delete-button"; // Classe para estilização
         deleteButton.onclick = () => deletePet(index);
 
-        li.appendChild(editButton);
-        li.appendChild(deleteButton);
+        buttonContainer.appendChild(editButton);
+        buttonContainer.appendChild(deleteButton);
+        li.appendChild(buttonContainer);
         petList.appendChild(li);
     });
-
-    // Mostra a seção de saida se tiver pets
-    if (pets.length > 0) {
-        saidaSection.classList.remove("hidden");
-    } else {
-        saidaSection.classList.add("hidden");
-    }
 }
 
-
-
 function addPet(event) {
-    event.preventDefault(); // Evita o enviar formulário
-    const nomeDono = nameDonoInput.value;
-    const nome = namePetInput.value;
-    const especie = especieInput.value;
-    const raca = racaInput.value;
-    const idade = idadeInput.value;
+    event.preventDefault(); // Evita o envio do formulário
+
+    const nomeDono = nameDonoInput.value.trim();
+    const nome = namePetInput.value.trim();
+    const especie = especieInput.value.trim();
+    const raca = racaInput.value.trim();
+    const idade = idadeInput.value.trim();
+
+    if (!nomeDono || !nome || !especie || !raca || !idade) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+    }
 
     if (currentIndex !== null) {
-        // Edita pet existente
         pets[currentIndex] = new Pet(nomeDono, nome, especie, raca, idade);
         currentIndex = null;
     } else {
@@ -76,8 +75,6 @@ function addPet(event) {
     idadeInput.value = "";
 
     renderPetList();
-
-    // lista de pets
     console.log("Lista de Pets:", pets);
 }
 
@@ -90,17 +87,12 @@ function editPet(index) {
     idadeInput.value = pet.idade;
     currentIndex = index; // pet sendo editado
 
-    // pet sendo editado
     console.log("Editando Pet:", pet);
 }
 
 function deletePet(index) {
-    const removedPet = pets[index]; // Guarda o pet removido
     pets.splice(index, 1); // Remove o pet
     renderPetList();
-
-    //removido
-    console.log("Pet Removido:", removedPet);
     console.log("Lista Atualizada de Pets:", pets);
 }
 

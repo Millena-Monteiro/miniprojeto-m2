@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
     <div class="container">
         <div class="form-image">
             <img src="assets/img/giphy.gif" alt="Imagem animada de um pet">
@@ -22,7 +23,7 @@
                 <label for="namePet">Nome do Pet</label>
                 <input id="namePet" type="text" class="input-style" placeholder="Digite o nome do pet:" required>
 
-                <label for="especie">espécie do pet</label>
+                <label for="especie">Espécie do Pet</label>
                 <input id="especie" type="text" class="input-style" placeholder="Digite a espécie do pet:" required>
 
                 <label for="raca">Raça do Pet</label>
@@ -31,15 +32,11 @@
                 <label for="idadepet">Idade do Pet</label>
                 <input id="idadepet" type="number" class="input-style" placeholder="Digite a idade do pet:" required>
             </article>
-            <button type="submit" class="button submit-button">Cadastrar</button>
-
+            <button type="submit" class="submit-button">Cadastrar</button>
         </form>
     </div>
 
-    <section id="saida" class="hidden">
-        <h2>Pets Cadastrados</h2>
-        <ul id="petList"></ul>
-    </section>
+    <ul id="petList"></ul>
 
     <script src="script.js"></script>
 </body>
